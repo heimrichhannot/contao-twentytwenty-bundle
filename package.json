@@ -1,0 +1,7 @@
+{
+  "name": "contao-twentytwenty-bundle",
+  "version": "1.0.0",
+  "dependencies": {
+    "foundation": "^4.2.1-1"
+  }
+}

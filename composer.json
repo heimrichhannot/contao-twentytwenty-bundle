@@ -1,0 +1,51 @@
+{
+  "name": "heimrichhannot/contao-twentytwenty-bundle",
+  "type": "contao-bundle",
+  "description": "Contao 4 bundle that offers you a before and after picture presentation with a sliding effect",
+  "license": "proprietary",
+  "require": {
+    "php": "^7.1",
+    "symfony/framework-bundle": "^3.4",
+    "contao/core-bundle": "^4.4",
+    "heimrichhannot/contao-utils-bundle": "^2.28"
+  },
+  "suggest": {
+    "heimrichhannot/contao-encore-bundle": "Provide webpack encore asset support."
+  },
+  "require-dev": {
+    "contao/test-case": "^1.1",
+    "contao/manager-plugin": "^2.0",
+    "friendsofphp/php-cs-fixer": "^2.2",
+    "phpunit/phpunit": ">=6.0 <6.5",
+    "php-http/guzzle6-adapter": "^1.1",
+    "php-http/message-factory": "^1.0.2",
+    "php-coveralls/php-coveralls": "^2.0",
+    "symfony/phpunit-bridge": "^3.2"
+  },
+  "config": {
+    "preferred-install": "dist"
+  },
+  "autoload": {
+    "psr-4": {
+      "HeimrichHannot\\TwentyTwentyBundle\\": "src/"
+    },
+    "classmap": [
+      "src/"
+    ],
+    "exclude-from-classmap": [
+      "src/Resources/contao/config/",
+      "src/Resources/contao/dca/",
+      "src/Resources/contao/languages/",
+      "src/Resources/contao/templates/"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "HeimrichHannot\\TwentyTwentyBundle\\Test\\": "tests/"
+    }
+  },
+  "extra": {
+    "contao-manager-plugin": "HeimrichHannot\\TwentyTwentyBundle\\ContaoManager\\Plugin",
+    "foxy": true
+  }
+}

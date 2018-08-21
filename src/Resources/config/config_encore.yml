@@ -1,0 +1,4 @@
+huh:
+    encore:
+        entries:
+            - { name: contao-twentytwenty-bundle, file: "vendor/heimrichhannot/contao-twentytwenty-bundle/src/Resources/public/js/contao-twentytwenty.es6.js", requiresCss: true }
