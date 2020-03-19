@@ -49,5 +49,8 @@
   "extra": {
     "contao-manager-plugin": "HeimrichHannot\\TwentyTwentyBundle\\ContaoManager\\Plugin",
     "foxy": true
+  },
+  "conflict": {
+    "heimrichhannot/contao-encore-bundle": "<1.5"
   }
 }
