@@ -12,6 +12,7 @@ namespace HeimrichHannot\TwentyTwentyBundle\ContentElement;
 use Contao\ContentElement;
 use Contao\FrontendTemplate;
 use Contao\System;
+use HeimrichHannot\TwentyTwentyBundle\Asset\FrontendAsset;
 
 class ContentTwentyTwenty extends ContentElement
 {
@@ -56,6 +57,8 @@ class ContentTwentyTwenty extends ContentElement
             'floating' => $this->floating,
             'fullsize' => $this->fullsize,
         ], null, 'id'.$source->id);
+
+        System::getContainer()->get(FrontendAsset::class)->addFrontendAssets();
     
         $this->Template->{$field} = $image;
     }
