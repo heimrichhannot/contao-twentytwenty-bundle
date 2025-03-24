@@ -42,32 +42,25 @@ class ContentTwentyTwenty extends ContentElement
      */
     protected function addTwentyTwentyImageToTemplate(string $field)
     {
-        $fileUtil = System::getContainer()->get('huh.utils.file');
-        $file = $fileUtil->getFileFromUuid($this->{$field});
+        $source = System::getContainer()->get('huh.utils.file')->getFileFromUuid($this->{$field});
 
-        if (!$file || !$file->path) {
-            return;
-        }
+        $image = new FrontendTemplate();
 
-        $imageTemplate = new FrontendTemplate('twentytwenty_image');
+        $this->addImageToTemplate($image, [
+            'addImage' => 1,
+            'singleSRC' => $source->path,
+            'alt' => $this->alt,
+            'size' => $this->size,
+            'imagemargin' => $this->imagemargin,
+            'imageUrl' => $this->imageUrl,
+            'caption' => $this->caption,
+            'floating' => $this->floating,
+            'fullsize' => $this->fullsize,
+        ], null, 'id'.$source->id);
 
-        $this->addImageToTemplate($imageTemplate, [
-            'addImage'   => true,
-            'singleSRC'  => $file->path,
-            'alt'        => $this->alt,
-            'size'       => $this->size,
-            'imagemargin'=> $this->imagemargin,
-            'imageUrl'   => $this->imageUrl,
-            'caption'    => $this->caption,
-            'floating'   => $this->floating,
-            'fullsize'   => $this->fullsize,
-        ], null, 'id' . $file->id);
+        System::getContainer()->get(FrontendAsset::class)->addFrontendAssets();
 
-        if (System::getContainer()->has(FrontendAsset::class)) {
-            System::getContainer()->get(FrontendAsset::class)->addFrontendAssets();
-        }
-
-        $this->Template->{$field} = $imageTemplate->parse();
+        $this->Template->{$field} = $image;
     }
 }
 
