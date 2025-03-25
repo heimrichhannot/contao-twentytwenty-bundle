@@ -1,6 +1,4 @@
 services:
-  HeimrichHannot\ExampleBundle\Asset\EncoreExtension:
-    autoconfigure: true
   HeimrichHannot\TwentyTwentyBundle\Asset\FrontendAsset:
     public: true
     autowire: true
