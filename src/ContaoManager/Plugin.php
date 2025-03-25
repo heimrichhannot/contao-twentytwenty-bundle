@@ -6,7 +6,7 @@
  * Time: 17:11
  */
 
-namespace HeimrichHannot\TwentyTwentyBundle\src\ContaoManager;
+namespace HeimrichHannot\TwentyTwentyBundle\ContaoManager;
 
 
 use Contao\CoreBundle\ContaoCoreBundle;
