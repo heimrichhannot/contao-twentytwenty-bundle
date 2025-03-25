@@ -6,7 +6,7 @@
  * Time: 17:13
  */
 
-namespace HeimrichHannot\TwentyTwentyBundle\src\ContentElement;
+namespace HeimrichHannot\TwentyTwentyBundle\ContentElement;
 
 
 use Contao\ContentElement;
