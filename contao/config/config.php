@@ -7,5 +7,5 @@
  */
 
 array_insert($GLOBALS['TL_CTE']['media'], count($GLOBALS['TL_CTE']['media']), [
-    'twentytwenty' => \HeimrichHannot\TwentyTwentyBundle\ContentElement\ContentTwentyTwenty::class
+    'twentytwenty' => \HeimrichHannot\TwentyTwentyBundle\src\ContentElement\ContentTwentyTwenty::class
 ]);
