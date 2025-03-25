@@ -1,108 +1,90 @@
-(function($){
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".twentytwenty-container").forEach(container => {
+    let isVertical = container.dataset.orientation === "vertical";
+    let beforeImg = container.querySelector("img:first-child");
+    let afterImg = container.querySelector("img:last-child");
 
-  $.fn.twentytwenty = function(options) {
-    var options = $.extend({default_offset_pct: 0.5, orientation: 'horizontal'}, options);
-    return this.each(function() {
+    let wrapper = document.createElement("div");
+    wrapper.className = `twentytwenty-wrapper twentytwenty-${isVertical ? "vertical" : "horizontal"}`;
+    container.parentNode.insertBefore(wrapper, container);
+    wrapper.appendChild(container);
 
-      var sliderPct = options.default_offset_pct;
-      var container = $(this);
-      var sliderOrientation = options.orientation;
-      var beforeDirection = (sliderOrientation === 'vertical') ? 'down' : 'left';
-      var afterDirection = (sliderOrientation === 'vertical') ? 'up' : 'right';
-      
-      
-      container.wrap("<div class='twentytwenty-wrapper twentytwenty-" + sliderOrientation + "'></div>");
-      container.append("<div class='twentytwenty-overlay'></div>");
+    let overlay = document.createElement("div");
+    overlay.className = "twentytwenty-overlay";
+    overlay.innerHTML = `<div class="twentytwenty-before-label">Vorher</div>
+                             <div class="twentytwenty-after-label">Nachher</div>`;
+    container.appendChild(overlay);
 
-      // need to change because height of img:first and img:last is returned as 1
-      var beforeImg = container.find("img:first");
-      var afterImg = container.find("img:last");
-      // var beforeImg = container.find("image-wrapper:first");
-      // var afterImg = container.find("image-wrapper:last");
-      container.append("<div class='twentytwenty-handle'></div>");
-      var slider = container.find(".twentytwenty-handle");
-      slider.append("<span class='twentytwenty-" + beforeDirection + "-arrow'></span>");
-      slider.append("<span class='twentytwenty-" + afterDirection + "-arrow'></span>");
-      container.addClass("twentytwenty-container");
-      beforeImg.addClass("twentytwenty-before");
-      afterImg.addClass("twentytwenty-after");
-      
-      var overlay = container.find(".twentytwenty-overlay");
-      overlay.append("<div class='twentytwenty-before-label'>Vorher</div>");
-      overlay.append("<div class='twentytwenty-after-label'>Nachher</div>");
+    let handle = document.createElement("div");
+    handle.className = "twentytwenty-handle";
+    handle.innerHTML = `<span class="twentytwenty-${isVertical ? "down" : "left"}-arrow"></span>
+                            <span class="twentytwenty-${isVertical ? "up" : "right"}-arrow"></span>`;
+    container.appendChild(handle);
 
-      var calcOffset = function(dimensionPct) {
-        var w = beforeImg.width();
-        var h = beforeImg.height();
+    beforeImg.classList.add("twentytwenty-before");
+    afterImg.classList.add("twentytwenty-after");
 
-        return {
-          w: w+"px",
-          h: h+"px",
-          cw: (dimensionPct*w)+"px",
-          ch: (dimensionPct*h)+"px"
-        };
+    let sliderPct = 0.9; // Standardposition in der Mitte
+    let offsetX = 0, offsetY = 0, imgWidth = 0, imgHeight = 0;
+    let dragging = false;
+
+    function calcOffset(dimensionPct) {
+      let w = beforeImg.offsetWidth;
+      let h = beforeImg.offsetHeight;
+      return {
+        w: w + "px",
+        h: h + "px",
+        cw: (dimensionPct * w) + "px",
+        ch: (dimensionPct * h) + "px"
       };
+    }
 
-      var adjustContainer = function(offset) {
-      	if (sliderOrientation === 'vertical') {
-      	  beforeImg.css("clip", "rect(0,"+offset.w+","+offset.ch+",0)");
-      	}
-      	else {
-          beforeImg.css("clip", "rect(0,"+offset.cw+","+offset.h+",0)");
-    	}
-        container.css("height", offset.h);
-      };
-
-      var adjustSlider = function(pct) {
-        var offset = calcOffset(pct);
-        slider.css((sliderOrientation==="vertical") ? "top" : "left", (sliderOrientation==="vertical") ? offset.ch : offset.cw);
-        adjustContainer(offset);
+    function adjustContainer(offset) {
+      if (isVertical) {
+        beforeImg.style.clip = `rect(0, ${offset.w}, ${offset.ch}, 0)`;
+      } else {
+        beforeImg.style.clip = `rect(0, ${offset.cw}, ${offset.h}, 0)`;
       }
+      container.style.height = offset.h;
+    }
 
-      $(window).on("resize.twentytwenty", function(e) {
-        adjustSlider(sliderPct);
-      });
+    function adjustSlider(pct) {
+      let offset = calcOffset(pct);
+      handle.style[isVertical ? "top" : "left"] = isVertical ? offset.ch : offset.cw;
+      adjustContainer(offset);
+    }
 
-      var offsetX = 0;
-      var imgWidth = 0;
-      
-      slider.on("movestart", function(e) {
-        if (((e.distX > e.distY && e.distX < -e.distY) || (e.distX < e.distY && e.distX > -e.distY)) && sliderOrientation !== 'vertical') {
-          e.preventDefault();
-        }
-        else if (((e.distX < e.distY && e.distX < -e.distY) || (e.distX > e.distY && e.distX > -e.distY)) && sliderOrientation === 'vertical') {
-          e.preventDefault();
-        }
-        container.addClass("active");
-        offsetX = container.offset().left;
-        offsetY = container.offset().top;
-        imgWidth = beforeImg.width(); 
-        imgHeight = beforeImg.height();          
-      });
+    function startDragging(event) {
+      event.preventDefault();
+      dragging = true;
+      let rect = container.getBoundingClientRect();
+      offsetX = rect.left;
+      offsetY = rect.top;
+      imgWidth = beforeImg.offsetWidth;
+      imgHeight = beforeImg.offsetHeight;
+    }
 
-      slider.on("moveend", function(e) {
-        container.removeClass("active");
-      });
+    function stopDragging() {
+      dragging = false;
+    }
 
-      slider.on("move", function(e) {
-        if (container.hasClass("active")) {
-          sliderPct = (sliderOrientation === 'vertical') ? (e.pageY-offsetY)/imgHeight : (e.pageX-offsetX)/imgWidth;
-          if (sliderPct < 0) {
-            sliderPct = 0;
-          }
-          if (sliderPct > 1) {
-            sliderPct = 1;
-          }
-          adjustSlider(sliderPct);
-        }
-      });
+    function moveSlider(event) {
+      if (!dragging) return;
 
-      container.find("img").on("mousedown", function(event) {
-        event.preventDefault();
-      });
+      let pageX = event.type.includes("touch") ? event.touches[0].pageX : event.pageX;
+      let pageY = event.type.includes("touch") ? event.touches[0].pageY : event.pageY;
 
-      $(window).trigger("resize.twentytwenty");
-    });
-  };
+      sliderPct = isVertical ? (pageY - offsetY) / imgHeight : (pageX - offsetX) / imgWidth;
+      sliderPct = Math.max(0, Math.min(1, sliderPct)); // Begrenzen auf 0-1
+      adjustSlider(sliderPct);
+    }
 
-})(jQuery);
+    handle.addEventListener("mousedown", startDragging);
+
+    document.addEventListener("mousemove", moveSlider);
+    document.addEventListener("touchmove", moveSlider, { passive: true });
+    document.addEventListener("mouseup", stopDragging);
+    document.addEventListener("touchend", stopDragging);
+    adjustSlider(sliderPct);
+  });
+});
