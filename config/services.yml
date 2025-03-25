@@ -1,5 +1,5 @@
 services:
-  HeimrichHannot\TwentyTwentyBundle\src\Asset\FrontendAsset:
+  HeimrichHannot\TwentyTwentyBundle\Asset\FrontendAsset:
     public: true
     autowire: true
     calls:
