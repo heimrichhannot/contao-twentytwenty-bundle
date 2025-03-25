@@ -16,7 +16,7 @@ use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
 use Contao\ManagerPlugin\Config\ContainerBuilder;
 use Contao\ManagerPlugin\Config\ExtensionPluginInterface;
 use HeimrichHannot\BegBundle\HeimrichHannotBegBundle;
-use HeimrichHannot\TwentyTwentyBundle\src\srcHeimrichHannotTwentyTwentyBundle;
+use HeimrichHannot\TwentyTwentyBundle\src\src\HeimrichHannotTwentyTwentyBundle;
 use HeimrichHannot\UtilsBundle\Container\ContainerUtil;
 
 class Plugin implements BundlePluginInterface, ExtensionPluginInterface
