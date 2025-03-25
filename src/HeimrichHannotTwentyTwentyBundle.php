@@ -6,7 +6,7 @@
  * Time: 17:08
  */
 
-namespace HeimrichHannot\TwentyTwentyBundle;
+namespace HeimrichHannot\src\TwentyTwentyBundle;
 
 
 use HeimrichHannot\TwentyTwentyBundle\DependencyInjection\HeimrichHannotTwentyTwentyExtension;
