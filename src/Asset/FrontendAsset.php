@@ -49,6 +49,7 @@ class FrontendAsset
 
         $publicFolder = 'bundles/heimrichhannottwentytwenty/';
         $GLOBALS['TL_CSS']['twentytwenty']            = $publicFolder.'vendor/twentytwenty/css/twentytwenty.css';
+        $GLOBALS['TL_JAVASCRIPT']['jquery']          = 'https://code.jquery.com/jquery-3.6.0.min.js';
         $GLOBALS['TL_JAVASCRIPT']['twentytwenty']     = $publicFolder.'vendor/twentytwenty/js/jquery.event.move.js';
         $GLOBALS['TL_JAVASCRIPT']['event-move']       = $publicFolder.'vendor/twentytwenty/js/jquery.twentytwenty.js';
         $GLOBALS['TL_JAVASCRIPT']['huh_twentytwenty'] = $publicFolder.'js/contao-twentytwenty.js';
