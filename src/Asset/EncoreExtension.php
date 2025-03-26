@@ -17,9 +17,9 @@ class EncoreExtension implements EncoreExtensionInterface{
 
         return [
 
-            EncoreEntry::create('twentytwenty', 'public/js/contao-twentytwenty.js')
+            EncoreEntry::create('twentytwenty', 'public/js/contao-twentytwenty.es6.js')
                 ->setIsHeadScript(false),
-            EncoreEntry::create('twentytwentyscss', 'public/vendor/twentytwenty/twentytwenty.scss')
+            EncoreEntry::create('twentytwentyscss', 'public/vendor/twentytwenty/css/twentytwenty.scss')
                 ->setIsHeadScript(true),
             EncoreEntry::create('event.move', 'public/vendor/twentytwenty/js/jquery.event.move.js')
                 ->setIsHeadScript(true),
