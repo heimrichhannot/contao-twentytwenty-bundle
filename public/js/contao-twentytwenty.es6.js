@@ -56,7 +56,7 @@ const twentyTwentyBundle = {
     },
 
     initTwentyTwentyControl: function () {
-        /*  let explanation = document.createElement("div");
+          let explanation = document.createElement("div");
           explanation.className = "alert alert-warning twentytwenty-explanation";
           explanation.innerText = "Mit gedrückter Maus nach links oder rechts schieben.";
 
@@ -67,7 +67,7 @@ const twentyTwentyBundle = {
                       if (explanation.parentNode) explanation.parentNode.removeChild(explanation);
                   }, 3000);
               }
-          });*/
+          });
 
         document.addEventListener("click", function (event) {
             if (event.target.matches(".twentytwenty-before-label")) {
