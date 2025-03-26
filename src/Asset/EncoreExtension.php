@@ -28,7 +28,6 @@ class EncoreExtension implements EncoreExtensionInterface{
                 ->setIsHeadScript(true),
 
 
-
         ];
 
     }

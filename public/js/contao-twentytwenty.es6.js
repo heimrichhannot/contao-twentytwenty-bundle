@@ -1,4 +1,4 @@
-import "../vendor/twentytwenty/css/twentytwenty-no-compass.scss";
+import "../vendor/css/twentytwenty-no-compass.scss";
 
 
 // Funktion zur Initialisierung
