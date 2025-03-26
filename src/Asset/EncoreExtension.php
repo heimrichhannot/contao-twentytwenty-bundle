@@ -3,7 +3,8 @@
 
 use HeimrichHannot\EncoreContracts\EncoreEntry;
 use HeimrichHannot\EncoreContracts\EncoreExtensionInterface;
-use HeimrichHannot\ExampleBundle\HeimrichHannotExampleBundle;
+use HeimrichHannot\TwentyTwentyBundle\HeimrichHannotTwentyTwentyBundle;
+
 class EncoreExtension implements EncoreExtensionInterface{
 
 
