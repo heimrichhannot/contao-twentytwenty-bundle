@@ -4,3 +4,8 @@ services:
     autowire: true
     calls:
       - [setEncoreFrontendAsset, ['@?HeimrichHannot\EncoreBundle\Asset\FrontendAsset']]
+
+# config/services.yml
+
+  HeimrichHannot\TwentyTwentyBundle\src\Asset\EncoreExtension:
+    autoconfigure: true
