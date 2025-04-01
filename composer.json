@@ -9,7 +9,7 @@
     "symfony/dependency-injection": "^6.0",
     "symfony/http-kernel": "^6.0",
     "contao/core-bundle": "^5.0",
-    "heimrichhannot/contao-utils-bundle": "^2.234.1"
+    "heimrichhannot/contao-utils-bundle": "^3.6.0"
   },
   "suggest": {
     "heimrichhannot/contao-encore-bundle": "Provide webpack encore asset support."
