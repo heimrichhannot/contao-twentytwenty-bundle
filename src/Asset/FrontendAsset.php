@@ -28,7 +28,7 @@ class FrontendAsset
     /**
      * FrontendAsset constructor.
      */
-    public function __construct(ContainerUtil $containerUtil = null)
+    public function __construct(ContainerUtil $containerUtil )
     {
         $this->containerUtil = $containerUtil;
     }
