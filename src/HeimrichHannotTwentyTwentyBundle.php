@@ -17,15 +17,8 @@ class HeimrichHannotTwentyTwentyBundle extends Bundle
     /**
     * {@inheritdoc}
     */
-    public function getContainerExtension()
-    {
-        return new HeimrichHannotTwentyTwentyExtension();
-    }
 
-    public function getPath()
-    {
-        return \dirname(__DIR__);
-    }
+
 
 
 }
