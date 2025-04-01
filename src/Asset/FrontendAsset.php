@@ -51,6 +51,6 @@ class FrontendAsset
         $GLOBALS['TL_CSS']['twentytwenty']            = $publicFolder.'vendor/twentytwenty/css/twentytwenty.css';
         $GLOBALS['TL_JAVASCRIPT']['twentytwenty']     = $publicFolder.'vendor/twentytwenty/js/jquery.event.move.js';
         $GLOBALS['TL_JAVASCRIPT']['event-move']       = $publicFolder.'vendor/twentytwenty/js/jquery.twentytwenty.js';
-        $GLOBALS['TL_JAVASCRIPT']['huh_twentytwenty'] = $publicFolder.'js/contao-twentytwenty.js';
+        $GLOBALS['TL_JAVASCRIPT']['huh_twentytwenty'] = $publicFolder.'js/contao-twentytwenty.es6.js';
     }
 }

@@ -5,6 +5,7 @@
 <div class="afterbefore-container" id="twentytwenty-id<?=$this->id; ?>">
     <div style="width: <?=$this->Before->arrSize[0]; ?>px;"  class="twentytwenty-container" data-orientation="horizontal">
         <!-- has to be set as img-tag in order to make twentytwenty work properly -->
+
         <img class="image twentytwenty-before" src="<?= $this->singleSRC_before->src ?>">
         <img class="image twentytwenty-after" src="<?= $this->singleSRC_after->src ?>">
     </div>

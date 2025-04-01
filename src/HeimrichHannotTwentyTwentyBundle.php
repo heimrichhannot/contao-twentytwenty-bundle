@@ -21,5 +21,11 @@ class HeimrichHannotTwentyTwentyBundle extends Bundle
     {
         return new HeimrichHannotTwentyTwentyExtension();
     }
-    
+
+    public function getPath()
+    {
+        return \dirname(__DIR__);
+    }
+
+
 }

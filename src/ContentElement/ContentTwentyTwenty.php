@@ -43,9 +43,9 @@ class ContentTwentyTwenty extends ContentElement
     protected function addTwentyTwentyImageToTemplate(string $field)
     {
         $source = System::getContainer()->get('huh.utils.file')->getFileFromUuid($this->{$field});
-        
+
         $image = new FrontendTemplate();
-    
+
         $this->addImageToTemplate($image, [
             'addImage' => 1,
             'singleSRC' => $source->path,
@@ -59,7 +59,7 @@ class ContentTwentyTwenty extends ContentElement
         ], null, 'id'.$source->id);
 
         System::getContainer()->get(FrontendAsset::class)->addFrontendAssets();
-    
+
         $this->Template->{$field} = $image;
     }
 }
