@@ -13,14 +13,10 @@ use Contao\ContentElement;
 use Contao\FrontendTemplate;
 use Contao\System;
 use HeimrichHannot\TwentyTwentyBundle\Asset\FrontendAsset;
-use Contao\FilesModel;
-use Contao\Controller;
 
 class ContentTwentyTwenty extends ContentElement
 {
-
     protected $strTemplate = 'ce_twentytwenty';
-
 
     public function generate()
     {
@@ -46,15 +42,12 @@ class ContentTwentyTwenty extends ContentElement
      */
     protected function addTwentyTwentyImageToTemplate(string $field)
     {
-        $uuid = $this->{$field};
-        $source = \Contao\FilesModel::findByUuid($uuid);
+        $source = System::getContainer()->get('huh.utils')->file->getFileFromUuid($this->{$field});
 
-        if (null === $source) {
-            return;
-        }
+
         $image = new FrontendTemplate();
 
-        \Contao\Controller::addImageToTemplate($image, [
+        $this->addImageToTemplate($image, [
             'addImage' => 1,
             'singleSRC' => $source->path,
             'alt' => $this->alt,

@@ -7,3 +7,6 @@ services:
 
   HeimrichHannot\TwentyTwentyBundle\src\Asset\EncoreExtension:
     autoconfigure: true
+
+  huh_utils:
+    enable_services: true
