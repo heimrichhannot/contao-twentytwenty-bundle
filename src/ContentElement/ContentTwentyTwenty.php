@@ -16,8 +16,18 @@ use HeimrichHannot\TwentyTwentyBundle\Asset\FrontendAsset;
 
 class ContentTwentyTwenty extends ContentElement
 {
+
     protected $strTemplate = 'ce_twentytwenty';
-    
+
+    private FileUtil $fileUtil;
+    private EncoreFrontendAsset $frontendAsset;
+
+    public function __construct(FileUtil $fileUtil, EncoreFrontendAsset $frontendAsset)
+    {
+        parent::__construct();
+        $this->fileUtil = $fileUtil;
+        $this->frontendAsset = $frontendAsset;
+    }
     public function generate()
     {
 //        if (System::getContainer()->get('huh.utils.container')->isBackend()) {
@@ -42,7 +52,11 @@ class ContentTwentyTwenty extends ContentElement
      */
     protected function addTwentyTwentyImageToTemplate(string $field)
     {
-        $source = System::getContainer()->get('huh.utils')->file->getFileFromUuid($this->{$field});
+        $source = $this->fileUtil->getFileFromUuid($this->{$field});
+
+        if (null === $source) {
+            return;
+        }
 
 
         $image = new FrontendTemplate();
