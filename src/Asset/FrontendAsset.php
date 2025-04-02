@@ -14,7 +14,9 @@ namespace HeimrichHannot\TwentyTwentyBundle\Asset;
 
 #use HeimrichHannot\UtilsBundle\Container\ContainerUtil;
 #use HeimrichHannot\UtilsBundle\Util\ContainerUtil;
-use HeimrichHannot\UtilsBundle\StaticUtil\SUtils;
+
+use Heimrichannot\UtilsBundle\StaticUtils\SUtils;
+
 class FrontendAsset
 {
     /**
