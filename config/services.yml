@@ -1,0 +1,9 @@
+services:
+  HeimrichHannot\TwentyTwentyBundle\Asset\FrontendAsset:
+    public: true
+    autowire: true
+    calls:
+      - [setEncoreFrontendAsset, ['@?HeimrichHannot\EncoreBundle\Asset\FrontendAsset']]
+
+  HeimrichHannot\TwentyTwentyBundle\src\Asset\EncoreExtension:
+    autoconfigure: true
