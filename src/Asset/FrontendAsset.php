@@ -13,7 +13,7 @@ namespace HeimrichHannot\TwentyTwentyBundle\Asset;
 
 #
 //use HeimrichHannot\UtilsBundle\Container\ContainerUtil;
-//use HeimrichHannot\UtilsBundle\Util\ContainerUtil;
+use HeimrichHannot\UtilsBundle\Util\ContainerUtil;
 
 
 
@@ -31,11 +31,11 @@ class FrontendAsset
     /**
      * FrontendAsset constructor.
      */
-  /*  public function __construct(ContainerUtil $containerUtil )
+    public function __construct(ContainerUtil $containerUtil )
     {
         $this->containerUtil = $containerUtil;
     }
-*/
+
     public function setEncoreFrontendAsset(\HeimrichHannot\EncoreBundle\Asset\FrontendAsset $encoreFrontendAsset)
     {
         $this->encoreFrotnendAsset = $encoreFrontendAsset;
