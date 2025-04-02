@@ -14,6 +14,7 @@ use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
 use HeimrichHannot\TwentyTwentyBundle\HeimrichHannotTwentyTwentyBundle;
+use HeimrichHannot\UtilsBundle\Util\ContainerUtil;
 
 class Plugin implements BundlePluginInterface
 {
