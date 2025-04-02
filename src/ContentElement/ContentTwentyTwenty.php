@@ -12,22 +12,13 @@ namespace HeimrichHannot\TwentyTwentyBundle\ContentElement;
 use Contao\ContentElement;
 use Contao\FrontendTemplate;
 use Contao\System;
+use HeimrichHannot\UtilsBundle\Utils\FileUtil;
 use HeimrichHannot\TwentyTwentyBundle\Asset\FrontendAsset;
 
 class ContentTwentyTwenty extends ContentElement
 {
 
     protected $strTemplate = 'ce_twentytwenty';
-
-    private FileUtil $fileUtil;
-    private EncoreFrontendAsset $frontendAsset;
-
-    public function __construct(FileUtil $fileUtil, EncoreFrontendAsset $frontendAsset)
-    {
-        parent::__construct();
-        $this->fileUtil = $fileUtil;
-        $this->frontendAsset = $frontendAsset;
-    }
     public function generate()
     {
 //        if (System::getContainer()->get('huh.utils.container')->isBackend()) {
@@ -36,6 +27,7 @@ class ContentTwentyTwenty extends ContentElement
         
         return parent::generate();
     }
+
     
     protected function compile()
     {
@@ -52,7 +44,10 @@ class ContentTwentyTwenty extends ContentElement
      */
     protected function addTwentyTwentyImageToTemplate(string $field)
     {
-        $source = $this->fileUtil->getFileFromUuid($this->{$field});
+        /** @var FileUtil $fileUtil */
+        $fileUtil = System::getContainer()->get(FileUtil::class);
+
+        $source = $fileUtil->getFileFromUuid($this->{$field});
 
         if (null === $source) {
             return;
@@ -73,7 +68,9 @@ class ContentTwentyTwenty extends ContentElement
             'fullsize' => $this->fullsize,
         ], null, 'id'.$source->id);
 
-        System::getContainer()->get(FrontendAsset::class)->addFrontendAssets();
+        /** @var FrontendAsset $frontendAsset */
+        $frontendAsset = System::getContainer()->get(FrontendAsset::class);
+        $frontendAsset->addFrontendAssets();
 
         $this->Template->{$field} = $image;
     }
