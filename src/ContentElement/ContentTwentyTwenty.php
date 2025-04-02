@@ -14,6 +14,7 @@ use Contao\FrontendTemplate;
 use Contao\System;
 use HeimrichHannot\TwentyTwentyBundle\Asset\FrontendAsset;
 use Contao\FilesModel;
+use Contao\Controller;
 
 class ContentTwentyTwenty extends ContentElement
 {
@@ -53,7 +54,7 @@ class ContentTwentyTwenty extends ContentElement
         }
         $image = new FrontendTemplate();
 
-        $this->addImageToTemplate($image, [
+        \Contao\Controller::addImageToTemplate($image, [
             'addImage' => 1,
             'singleSRC' => $source->path,
             'alt' => $this->alt,
