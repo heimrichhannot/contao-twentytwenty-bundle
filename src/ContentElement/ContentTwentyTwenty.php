@@ -12,7 +12,7 @@ namespace HeimrichHannot\TwentyTwentyBundle\ContentElement;
 use Contao\ContentElement;
 use Contao\FrontendTemplate;
 use Contao\System;
-use HeimrichHannot\UtilsBundle\Utils\FileUtil;
+use HeimrichHannot\UtilsBundle\Utils\Utils;
 use HeimrichHannot\TwentyTwentyBundle\Asset\FrontendAsset;
 
 class ContentTwentyTwenty extends ContentElement
