@@ -6,13 +6,15 @@
  * Time: 17:44
  */
 
-file_put_contents(
-    __DIR__ . '/../../../../config_debug.log',
-    "config.php wurde geladen\n",
-    FILE_APPEND
-);
 
 
-array_insert($GLOBALS['TL_CTE']['media'], count($GLOBALS['TL_CTE']['media']), [
-    'twentytwenty' => \HeimrichHannot\TwentyTwentyBundle\ContentElement\ContentTwentyTwenty::class
-]);
+
+if (function_exists('array_insert')) {
+    // Contao 4.13: mit array_insert()
+    array_insert($GLOBALS['TL_CTE']['media'], count($GLOBALS['TL_CTE']['media']), [
+        'twentytwenty' => \HeimrichHannot\TwentyTwentyBundle\ContentElement\ContentTwentyTwenty::class,
+    ]);
+} else {
+    // Contao 5.x: direkt hinzufügen
+    $GLOBALS['TL_CTE']['media']['twentytwenty'] = \HeimrichHannot\TwentyTwentyBundle\ContentElement\ContentTwentyTwenty::class;
+}
